@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Trading Insights — a premium trading education ebook focused on structure, liquidity, entries, exits and risk management." />
+  <meta name="theme-color" content="#05070a" />
+  <title>Trading Insights — Trade With Structure, Not Emotion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="market-backdrop" aria-hidden="true">
+    <div class="chart-grid"></div>
+    <div class="market-glow one"></div>
+    <div class="market-glow two"></div>
+    <div class="market-glow three"></div>
+    <canvas id="marketCanvas"></canvas>
+  </div>
+
+  <div class="nav-wrap"><div class="container"><nav>
+    <a class="brand" href="#hero"><span class="brand-mark">TRADING</span> INSIGHTS</a>
+    <div class="nav-links"><a href="#overview">Overview</a><a href="#purchase">Get The Ebook</a><a href="#free-access">Free Access</a><a href="#faq">FAQ</a></div>
+    <a class="nav-cta" href="#purchase">Get The Ebook</a>
+  </nav></div></div>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="eyebrow">TRADING INSIGHTS</div>
+        <h1>Trade With <span class="green">Structure.</span><br>Not <span class="red">Emotion.</span></h1>
+        <p>A premium trading guide built around market structure, liquidity, entries, exits and risk management — so your decisions are more deliberate and less reactive.</p>
+        <div class="market-tape" aria-label="Market examples">
+          <div class="tape-item"><span class="tape-dot up"></span> NAS100 <span class="up">+1.24%</span></div>
+          <div class="tape-item"><span class="tape-dot down"></span> XAUUSD <span class="down">-0.37%</span></div>
+          <div class="tape-item"><span class="tape-dot up"></span> BTCUSD <span class="up">+2.08%</span></div>
+          <div class="tape-item"><span class="tape-dot down"></span> EURUSD <span class="down">-0.18%</span></div>
+        </div>
+        <div class="hero-actions"><a class="btn primary" href="#purchase">Get The Ebook — $249</a><a class="btn" href="#overview">Explore The Framework</a></div>
+        <div class="hero-note">Instant digital access • Educational content only • No guaranteed results</div>
+
+        <div class="video" data-reveal aria-label="Official ebook introduction video placeholder">
+          <div class="video-grid"></div>
+          <div class="video-inner"><div class="play">▶</div></div>
+          <div class="video-label"><span>Official Trading Insights introduction</span><span>16:9 • VIDEO_URL_PLACEHOLDER</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="overview"><div class="container section-grid">
+      <div class="section-head" data-reveal>
+        <div class="eyebrow">INSIDE THE FRAMEWORK</div>
+        <h2>Build a Better Process Before You Chase Better Trades.</h2>
+        <p>Trading Insights is designed as a practical educational resource for traders who want a more structured way to study price behavior, liquidity, execution and risk.</p>
+        <div class="list">
+          <div><span class="check">✓</span> Structured trading concepts</div>
+          <div><span class="check">✓</span> Practical chart-based examples</div>
+          <div><span class="check">✓</span> Entry and exit frameworks</div>
+          <div><span class="check">✓</span> Risk management principles</div>
+          <div><span class="check">✓</span> Trading psychology and discipline</div>
+          <div><span class="check">✓</span> Actionable checklists</div>
+        </div>
+        <div style="margin-top:25px"><a class="btn" href="#purchase">Get The PDF — $249</a></div>
+      </div>
+      <div class="mockup" data-reveal>
+        <div class="book-shell">
+          <div class="book">
+            <small>PDF 1.0</small>
+            <h3>Trading<br><span>Insights</span></h3>
+            <p>Study liquidity, structure, entries, exits and risk with a clearer, more disciplined framework.</p>
+            <div class="book-footer">LEARN • ANALYZE • EXECUTE</div>
+          </div>
+        </div>
+      </div>
+    </div></section>
+
+    <section id="purchase"><div class="container">
+      <div class="center" data-reveal><div class="eyebrow">GET INSTANT ACCESS</div><h2 class="section-head" style="margin:10px 0 4px">Trading Insights</h2><p>Choose the standard purchase option, or use the discounted crypto payment route.</p></div>
+      <div class="pricing">
+        <div class="card purchase" data-reveal>
+          <div class="small">ONE-TIME PAYMENT</div><div class="price">$249</div><div class="small">Digital PDF</div>
+          <div class="features"><div>✓ Complete PDF</div><div>✓ Practical trading framework</div><div>✓ Chart-based examples</div><div>✓ Trading checklists</div><div>✓ Instant access after payment verification</div></div>
+          <a class="btn primary full" href="YOUR_CHECKOUT_URL" target="_blank" rel="noopener">Purchase Trading Insights</a>
+          <div class="small" style="margin-top:14px">Educational content only. Trading involves significant risk. No profit or performance is guaranteed.</div>
+        </div>
+
+        <div class="card discount" data-reveal>
+          <span class="badge">SPECIAL PAYMENT OFFER</span>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:29px;margin:8px 0">Save 15% With Trust Wallet</h3>
+          <p class="small">Pay directly through Trust Wallet and receive 15% off the regular price.</p>
+          <div><span class="small">Regular price</span><div style="text-decoration:line-through;color:#606a76">$249</div><span class="badge" style="margin-top:8px">15% OFF</span><div class="offer-price">$211.65</div></div>
+          <div class="wallet">
+            <div><div class="small" style="margin-bottom:7px">Wallet address</div><div class="wallet-code" id="walletAddress">YOUR_TRUST_WALLET_ADDRESS</div><button class="btn copy" id="copyWallet" type="button">Copy Wallet Address</button><div class="small" style="margin-top:11px">Network: YOUR_SUPPORTED_NETWORK</div></div>
+            <div><div class="qr" role="button" tabindex="0" aria-label="Trust Wallet QR placeholder" title="Click to enlarge"><div class="qr-inner"></div></div><div class="small" style="text-align:center;margin-top:7px">QR placeholder</div></div>
+          </div>
+          <div class="steps"><div>Open Trust Wallet.</div><div>Select the correct cryptocurrency and network.</div><div>Send exactly $211.65 worth of the required cryptocurrency.</div><div>Double-check the network and wallet address before confirming.</div><div>Take a screenshot of the successful transaction.</div><div>Send the screenshot to WhatsApp for manual verification.</div><div>After verification, the PDF will be delivered to you.</div></div>
+          <a class="btn full" style="margin-top:18px" href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" rel="noopener">Send Payment Screenshot on WhatsApp</a>
+          <div class="notice">Always verify the wallet address and network before sending funds. Cryptocurrency transactions may be irreversible.</div>
+        </div>
+      </div>
+    </div></section>
+
+    <section id="free-access"><div class="container"><div class="card center" style="padding:36px" data-reveal>
+      <span class="badge">ALTERNATIVE ACCESS</span><h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(30px,4vw,48px);line-height:1.04;letter-spacing:-.05em;margin:13px 0 8px">Get Trading Insights For Free</h2>
+      <p>Eligible users may receive the ebook at no additional charge by completing our partner-account promotion requirements.</p>
+      <p>Open a qualifying account through our designated partner referral code, make the required minimum deposit, and complete the required trading activity. Contact us on WhatsApp first to receive the correct partner code and latest instructions.</p>
+      <div class="partner-grid">
+        <div class="card partner" style="text-align:left" data-reveal><span class="badge">PARTNER</span><h3>Exness</h3><div class="small">Partner code: YOUR_EXNESS_PARTNER_CODE</div><ul><li>Create a qualifying account using our partner referral code.</li><li>Meet the required minimum deposit of $50.</li><li>Complete the required trading activity according to the current promotion terms.</li><li>Contact us on WhatsApp for verification and the exact current process.</li></ul></div>
+        <div class="card partner" style="text-align:left" data-reveal><span class="badge">PARTNER</span><h3>XM</h3><div class="small">Partner code: YOUR_XM_PARTNER_CODE</div><ul><li>Create a qualifying account using our partner referral code.</li><li>Meet the required minimum deposit of $50.</li><li>Complete the required trading activity according to the current promotion terms.</li><li>Contact us on WhatsApp for verification and the exact current process.</li></ul></div>
+      </div>
+      <a class="btn primary" style="margin-top:22px" href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" rel="noopener">Get The Free Access Instructions on WhatsApp</a>
+      <div class="notice">Broker availability, eligibility, minimum deposits, trading requirements and promotional terms may vary by country and can change. Users must independently review and comply with the broker's current official terms. This offer does not guarantee trading profits.</div>
+    </div></div></section>
+
+    <section><div class="container"><div class="trust">
+      <div class="card" data-reveal><div class="icon">✓</div><h3>Secure Delivery</h3><p class="small">Your purchase is manually verified before digital delivery.</p></div>
+      <div class="card" data-reveal><div class="icon">▤</div><h3>Digital Product</h3><p class="small">Receive the Trading Insights ebook digitally after successful verification.</p></div>
+      <div class="card" data-reveal><div class="icon">◌</div><h3>WhatsApp Support</h3><p class="small">Contact our support team if you need help with payment or access.</p></div>
+    </div></div></section>
+
+    <section id="faq"><div class="container faq">
+      <div class="center" style="margin-bottom:20px" data-reveal><div class="eyebrow">QUESTIONS</div><h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(30px,4vw,46px);line-height:1.03;letter-spacing:-.05em;margin:9px 0">Frequently Asked Questions</h2></div>
+      <div class="faq-item" data-reveal><button class="faq-btn" type="button">Is this a physical book?<span class="plus">＋</span></button><div class="faq-answer">No. Trading Insights is a digital PDF product.</div></div>
+      <div class="faq-item" data-reveal><button class="faq-btn" type="button">How will I receive the PDF?<span class="plus">＋</span></button><div class="faq-answer">After your payment is verified, the PDF will be delivered digitally.</div></div>
+      <div class="faq-item" data-reveal><button class="faq-btn" type="button">Can I pay using Trust Wallet?<span class="plus">＋</span></button><div class="faq-answer">Yes. The Trust Wallet section provides the payment address and QR code placeholder.</div></div>
+      <div class="faq-item" data-reveal><button class="faq-btn" type="button">How do I get the 15% Trust Wallet discount?<span class="plus">＋</span></button><div class="faq-answer">Send the discounted amount using the specified wallet and network, then send the transaction screenshot to WhatsApp for verification.</div></div>
+      <div class="faq-item" data-reveal><button class="faq-btn" type="button">How can I get the PDF for free?<span class="plus">＋</span></button><div class="faq-answer">Contact us on WhatsApp before opening an account so we can provide the current partner code and explain the eligibility requirements.</div></div>
+      <div class="faq-item" data-reveal><button class="faq-btn" type="button">Does the book guarantee profits?<span class="plus">＋</span></button><div class="faq-answer">No. The ebook is an educational resource and does not guarantee profits, win rates or trading performance.</div></div>
+    </div></section>
+
+    <section class="final"><div class="container"><div class="card final-box" data-reveal>
+      <div class="eyebrow">READY TO EXPLORE THE FRAMEWORK?</div>
+      <h2 style="font-size:clamp(34px,5vw,58px);margin:12px 0">Turn Your Trading Into a Process.</h2>
+      <p class="small" style="font-size:14px;max-width:680px;margin:0 auto">Choose your preferred access option and study the framework at your own pace.</p>
+      <div class="hero-actions"><a class="btn primary" href="#purchase">Get Trading Insights — $249</a><a class="btn" href="#free-access">Get Free Access Instructions</a></div>
+    </div></div></section>
+  </main>
+
+  <footer><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><div class="brand"><span class="brand-mark">TRADING</span> INSIGHTS</div><p class="small" style="font-size:13px;margin-top:12px">Learn. Plan. Trade. Grow.</p></div>
+    <div><div class="footer-title">Product</div><div class="footer-links"><a href="#overview">Trading Insights</a><a href="#purchase">Purchase</a><a href="#free-access">Free Access</a><a href="#faq">FAQ</a></div></div>
+    <div><div class="footer-title">Support</div><div class="footer-links"><a href="https://wa.me/YOUR_WHATSAPP_NUMBER">WhatsApp</a><a href="https://wa.me/YOUR_WHATSAPP_NUMBER">Contact</a></div></div>
+    <div><div class="footer-title">Legal</div><div class="footer-links"><a href="PRIVACY_POLICY_URL">Privacy Policy</a><a href="TERMS_URL">Terms & Conditions</a><a href="REFUND_POLICY_URL">Refund Policy</a><a href="RISK_DISCLAIMER_URL">Risk Disclaimer</a></div></div>
+  </div><div class="copyright"><span>© 2026 Trading Insights. All rights reserved.</span><span>Trading involves substantial risk. Educational content only. No investment advice or guaranteed results.</span></div></div></footer>
+  <div class="toast" id="toast">Wallet address copied.</div>
+
+  <script>
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-btn').forEach(btn => btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    }));
+
+    // Wallet copy toast
+    const copyBtn = document.getElementById('copyWallet');
+    const address = document.getElementById('walletAddress');
+    const toast = document.getElementById('toast');
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(address.textContent.trim());
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2200);
+      } catch (e) {
+        toast.textContent = 'Copy failed — please copy manually.';
+        toast.classList.add('show');
+        setTimeout(() => { toast.classList.remove('show'); toast.textContent = 'Wallet address copied.'; }, 2500);
+      }
+    });
+
+    // Scroll reveal
+    const reveal = new IntersectionObserver(entries => {
+      entries.forEach((entry, index) => {
+        if (!entry.isIntersecting) return;
+        entry.target.style.animationDelay = `${Math.min(index * 45, 220)}ms`;
+        entry.target.classList.add('visible');
+        reveal.unobserve(entry.target);
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('[data-reveal]').forEach(el => reveal.observe(el));
+
+    // Animated candlestick market backdrop: green bullish, red bearish.
+    const canvas = document.getElementById('marketCanvas');
+    const ctx = canvas.getContext('2d', { alpha: true });
+    let W = 0, H = 0, DPR = 1, candles = [], trend = [], raf = 0;
+
+    function rand(min, max) { return Math.random() * (max - min) + min; }
+    function resize() {
+      DPR = Math.min(window.devicePixelRatio || 1, 2);
+      W = canvas.clientWidth = window.innerWidth;
+      H = canvas.clientHeight = window.innerHeight;
+      canvas.width = Math.floor(W * DPR);
+      canvas.height = Math.floor(H * DPR);
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+
+      const count = Math.max(52, Math.floor(W / 24));
+      candles = [];
+      trend = [];
+      let price = H * 0.56;
+      for (let i = 0; i < count; i++) {
+        const drift = rand(-18, 18) + Math.sin(i / 7) * 7;
+        const open = price;
+        const close = Math.max(H * 0.16, Math.min(H * 0.82, open + drift));
+        const body = Math.max(4, Math.abs(close - open));
+        const high = Math.max(open, close) - rand(12, 34);
+        const low = Math.min(open, close) + rand(12, 34);
+        // In screen coordinates, smaller y = higher price.
+        const hi = Math.max(12, high);
+        const lo = Math.min(H - 12, low);
+        candles.push({
+          x: 16 + i * ((W - 32) / (count - 1)),
+          open, close, high: hi, low: lo,
+          body, phase: rand(0, Math.PI * 2), speed: rand(.00055, .00135),
+          alpha: rand(.055, .13)
+        });
+        price = close * .86 + price * .14;
+        trend.push({ x: candles[i].x, y: close });
+      }
+    }
+
+    function draw(time) {
+      ctx.clearRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'source-over';
+
+      // Soft chart wash.
+      const wash = ctx.createRadialGradient(W * .5, H * .46, 0, W * .5, H * .46, Math.max(W, H) * .65);
+      wash.addColorStop(0, 'rgba(255,255,255,.018)');
+      wash.addColorStop(.45, 'rgba(0,0,0,0)');
+      wash.addColorStop(1, 'rgba(0,0,0,.28)');
+      ctx.fillStyle = wash;
+      ctx.fillRect(0, 0, W, H);
+
+      // Price/trend line behind candles.
+      ctx.beginPath();
+      trend.forEach((p, i) => {
+        const y = p.y + (reduced ? 0 : Math.sin(time * .0009 + i * .18) * 1.7);
+        if (i === 0) ctx.moveTo(p.x, y);
+        else ctx.lineTo(p.x, y);
+      });
+      ctx.strokeStyle = 'rgba(255,255,255,.075)';
+      ctx.lineWidth = 1.5;
+      ctx.shadowBlur = 18;
+      ctx.shadowColor = 'rgba(255,255,255,.08)';
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      candles.forEach((c, i) => {
+        const float = reduced ? 0 : Math.sin(time * c.speed + c.phase) * 1.7;
+        const o = c.open + float;
+        const cl = c.close + float;
+        const hi = Math.min(o, cl) - Math.abs(c.high - Math.min(c.open, c.close));
+        const lo = Math.max(o, cl) + Math.abs(c.low - Math.max(c.open, c.close));
+        const bullish = cl < o; // upward price movement in screen space
+        const green = 'rgba(34,197,94,' + c.alpha + ')';
+        const red = 'rgba(239,68,68,' + c.alpha + ')';
+        const edge = bullish ? 'rgba(102,230,141,.42)' : 'rgba(255,115,115,.36)';
+        const glow = bullish ? 'rgba(34,197,94,.20)' : 'rgba(239,68,68,.16)';
+        const top = Math.min(o, cl);
+        const bodyH = Math.max(5, Math.abs(cl - o));
+
+        ctx.strokeStyle = edge;
+        ctx.lineWidth = 1.1;
+        ctx.shadowBlur = 13;
+        ctx.shadowColor = glow;
+        ctx.beginPath();
+        ctx.moveTo(c.x, hi);
+        ctx.lineTo(c.x, lo);
+        ctx.stroke();
+
+        ctx.fillStyle = bullish ? green : red;
+        ctx.fillRect(c.x - 4.5, top, 9, bodyH);
+        ctx.strokeStyle = edge;
+        ctx.strokeRect(c.x - 4.5, top, 9, bodyH);
+      });
+      ctx.shadowBlur = 0;
+
+      if (!reduced) raf = requestAnimationFrame(draw);
+    }
+
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+    draw(0);
+    if (!reduced) raf = requestAnimationFrame(draw);
+
+    // Very subtle pointer depth; kept intentionally restrained.
+    if (!reduced) {
+      const backdrop = document.querySelector('.market-backdrop');
+      let tx = 0, ty = 0, cx = 0, cy = 0;
+      window.addEventListener('pointermove', e => {
+        tx = (e.clientX / window.innerWidth - .5) * 10;
+        ty = (e.clientY / window.innerHeight - .5) * 7;
+      }, { passive: true });
+      function parallax() {
+        cx += (tx - cx) * .045;
+        cy += (ty - cy) * .045;
+        backdrop.style.transform = `translate3d(${cx}px,${cy}px,0)`;
+        requestAnimationFrame(parallax);
+      }
+      parallax();
+    }
+  </script>
+</body>
+</html>
