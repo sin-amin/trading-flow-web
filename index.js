@@ -1,7 +1,29 @@
-
       const reduced = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
+
+      const toast = document.getElementById("toast");
+
+      // Video facade — click-to-load YouTube (nothing loads until clicked).
+      document.querySelectorAll(".video-facade").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const videoId = btn.dataset.videoId;
+          if (!videoId) {
+            toast.textContent = "Video coming soon — contact us for a preview.";
+            toast.classList.add("show");
+            setTimeout(() => toast.classList.remove("show"), 2200);
+            return;
+          }
+          const iframe = document.createElement("iframe");
+          iframe.title = "Official Ebook Introduction";
+          iframe.loading = "lazy";
+          iframe.allow =
+            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+          iframe.allowFullscreen = true;
+          iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`;
+          btn.replaceWith(iframe);
+        });
+      });
 
       // FAQ accordion
       document.querySelectorAll(".faq-btn").forEach((btn) =>
@@ -20,18 +42,19 @@
 
   button.addEventListener("click", async () => {
 
-    const addressId = button.dataset.copy;
-    const address = document.getElementById(addressId);
+    const sourceId = button.dataset.copy;
+    const source = document.getElementById(sourceId);
 
-    if (!address) return;
+    if (!source) return;
 
-    const text = address.textContent.trim();
+    const text = source.textContent.trim();
+    const label = button.dataset.label || "Wallet address copied.";
 
     try {
 
       await navigator.clipboard.writeText(text);
 
-      toast.textContent = "Wallet address copied.";
+      toast.textContent = label;
       toast.classList.add("show");
 
     } catch (error) {
@@ -49,7 +72,7 @@
       try {
         document.execCommand("copy");
 
-        toast.textContent = "Wallet address copied.";
+        toast.textContent = label;
         toast.classList.add("show");
 
       } catch (e) {
@@ -70,17 +93,18 @@
 
 });
 
-      // Scroll reveal
+      // Scroll reveal — trigger as soon as an element approaches the viewport
+      // so content never "pops in" late during fast scrolling.
       const reveal = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry, index) => {
             if (!entry.isIntersecting) return;
-            entry.target.style.animationDelay = `${Math.min(index * 45, 220)}ms`;
+            entry.target.style.animationDelay = `${Math.min(index * 35, 140)}ms`;
             entry.target.classList.add("visible");
             reveal.unobserve(entry.target);
           });
         },
-        { threshold: 0.08 },
+        { threshold: 0, rootMargin: "0px 0px 120px 0px" },
       );
       document
         .querySelectorAll("[data-reveal]")
@@ -94,15 +118,16 @@
         DPR = 1,
         candles = [],
         trend = [],
-        raf = 0;
+        raf = 0,
+        running = false;
 
       function rand(min, max) {
         return Math.random() * (max - min) + min;
       }
       function resize() {
-        DPR = Math.min(window.devicePixelRatio || 1, 2);
-        W = canvas.clientWidth = window.innerWidth;
-        H = canvas.clientHeight = window.innerHeight;
+        DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+        W = window.innerWidth;
+        H = window.innerHeight;
         canvas.width = Math.floor(W * DPR);
         canvas.height = Math.floor(H * DPR);
         ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
@@ -185,14 +210,11 @@
           const edge = bullish
             ? "rgba(102,230,141,.42)"
             : "rgba(255,115,115,.36)";
-          const glow = bullish ? "rgba(34,197,94,.20)" : "rgba(239,68,68,.16)";
           const top = Math.min(o, cl);
           const bodyH = Math.max(5, Math.abs(cl - o));
 
           ctx.strokeStyle = edge;
           ctx.lineWidth = 1.1;
-          ctx.shadowBlur = 13;
-          ctx.shadowColor = glow;
           ctx.beginPath();
           ctx.moveTo(c.x, hi);
           ctx.lineTo(c.x, lo);
@@ -205,13 +227,31 @@
         });
         ctx.shadowBlur = 0;
 
-        if (!reduced) raf = requestAnimationFrame(draw);
+        if (!reduced && running) raf = requestAnimationFrame(draw);
+      }
+
+      function startLoop() {
+        if (reduced || running) return;
+        running = true;
+        raf = requestAnimationFrame(draw);
+      }
+
+      function stopLoop() {
+        running = false;
+        if (raf) cancelAnimationFrame(raf);
+        raf = 0;
       }
 
       resize();
       window.addEventListener("resize", resize, { passive: true });
       draw(0);
-      if (!reduced) raf = requestAnimationFrame(draw);
+      startLoop();
+
+      // Pause the animation entirely when the tab is hidden to save CPU/battery.
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) stopLoop();
+        else startLoop();
+      });
 
       // Very subtle pointer depth; kept intentionally restrained.
       if (!reduced) {
@@ -220,19 +260,29 @@
           ty = 0,
           cx = 0,
           cy = 0;
+        function parallax() {
+          if (document.hidden) {
+            rafP = requestAnimationFrame(parallax);
+            return;
+          }
+          cx += (tx - cx) * 0.045;
+          cy += (ty - cy) * 0.045;
+          backdrop.style.transform = `translate3d(${cx.toFixed(2)}px,${cy.toFixed(2)}px,0)`;
+          // Stop the loop once converged; restarted on the next pointer move.
+          if (Math.abs(tx - cx) < 0.05 && Math.abs(ty - cy) < 0.05) {
+            rafP = 0;
+            return;
+          }
+          rafP = requestAnimationFrame(parallax);
+        }
+        let rafP = 0;
         window.addEventListener(
           "pointermove",
           (e) => {
             tx = (e.clientX / window.innerWidth - 0.5) * 10;
             ty = (e.clientY / window.innerHeight - 0.5) * 7;
+            if (!rafP) rafP = requestAnimationFrame(parallax);
           },
           { passive: true },
         );
-        function parallax() {
-          cx += (tx - cx) * 0.045;
-          cy += (ty - cy) * 0.045;
-          backdrop.style.transform = `translate3d(${cx}px,${cy}px,0)`;
-          requestAnimationFrame(parallax);
-        }
-        parallax();
       }

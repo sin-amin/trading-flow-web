@@ -11,11 +11,27 @@
     <title>Trading Flow — Trade With Structure, Not Emotion</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Non-render-blocking font load: page paints immediately with system
+         fonts, then swaps in web fonts when ready (display=swap). -->
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+      />
+    </noscript>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.min.css" />
   </head>
   <body>
     <div class="market-backdrop" aria-hidden="true">
@@ -31,7 +47,7 @@
         <nav>
           <a class="brand" href="#hero"
             ><span class="brand-mark" style="color: #66e68d">TRADING</span>
-            Flow</a
+            <span>Flow</span></a
           >
           <div class="nav-links">
             <a href="#overview">Overview</a>
@@ -43,6 +59,7 @@
             class="nav-cta"
             href="https://wa.me/8801540672247"
             target="_blank"
+            rel="noopener noreferrer"
             >Contact Us</a
           >
         </nav>
@@ -61,19 +78,19 @@
             Technical Skill Get’s you Profitable, but 
 Risk Management Makes you Millionaires.
           </p>
-          <div class="market-tape" aria-label="Market examples">
-            <div class="tape-item">
+          <div class="market-tape" role="list" aria-label="Market examples">
+            <div class="tape-item" role="listitem">
               <span class="tape-dot up"></span> DISCIPLINE
               <span class="up">⚖️</span>
             </div>
-            <div class="tape-item">
+            <div class="tape-item" role="listitem">
               <span class="tape-dot down"></span> PATIENCE
               <span class="down">🧘</span>
             </div>
-            <div class="tape-item">
+            <div class="tape-item" role="listitem">
               <span class="tape-dot up"></span> RISK <span class="up">⚠️</span>
             </div>
-            <div class="tape-item">
+            <div class="tape-item" role="listitem">
               <span class="tape-dot down"></span> CONSISTENCY
               <span class="down">🌱</span>
             </div>
@@ -92,18 +109,16 @@ Risk Management Makes you Millionaires.
         </div>
 
         <div id="inside-pdf" class="video">
-  <iframe
-    src=""
-    title="Official Ebook Introduction"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-    allowfullscreen>
-  </iframe>
-        </div>
-</div>
-
-  </div>
-
-</div>
+          <!-- Click-to-load facade: no YouTube JS/iframe loads until the user
+               clicks play. Set the real video ID in data-video-id below. -->
+          <button
+            class="video-facade"
+            type="button"
+            data-video-id=""
+            aria-label="Play video introduction"
+          >
+            <span class="video-play">▶</span>
+          </button>
         </div>
       </section>
 
@@ -141,14 +156,19 @@ Risk Management Makes you Millionaires.
             <div class="book-shell">
                 <img
                   class="book-cover"
-                  src="./assets/images/The Liquidity Blueprint cover-page v2.png"
-                  alt="The Liquidity Blueprint PDF 1.0" />
+                  src="./assets/images/the-liquidity-blueprint-cover.webp"
+                  alt="The Liquidity Blueprint PDF 1.0"
+                  width="700"
+                  height="1044"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low" />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="overview">
+      <section id="beyond-chart">
         <div class="container section-grid pdf2">
           <div style="order: 2; padding: 25px;
           background:radial-gradient(
@@ -184,8 +204,12 @@ Risk Management Makes you Millionaires.
             <div class="book-shell">
                 <img
                   class="book-cover"
-                  src="./assets/images/Beyond Chart v2 cover-page.png"
-                  alt="Beyond Chart PDF 1.0" />
+                  src="./assets/images/beyond-chart-cover.webp"
+                  alt="Beyond Chart PDF 2.0"
+                  width="700"
+                  height="998"
+                  loading="lazy"
+                  decoding="async" />
             </div>
           </div>
         </div>
@@ -194,10 +218,10 @@ Risk Management Makes you Millionaires.
       <section id="purchase">
   <div class="container">
 
-    <div class="center" data-reveal>
+    <div class="center section-head" data-reveal>
       <div class="eyebrow">GET INSTANT ACCESS</div>
 
-      <h2 style="margin-top: 2px;" class="section-head">
+      <h2 style="margin-top: 2px;">
         Choose Your Trading Framework
       </h2>
 
@@ -367,10 +391,14 @@ Risk Management Makes you Millionaires.
 
 
         <div>
-  <div class="qr" role="button" tabindex="0" aria-label="Scan QR code to pay">
+  <div class="qr">
     <img
-      src="./assets/images/bep20 trust wallet.jpg"
-      alt="Payment QR code"
+      src="./assets/images/bep20-trust-wallet.webp"
+      alt="Trust Wallet BEP-20 payment QR code"
+      width="400"
+      height="400"
+      loading="lazy"
+      decoding="async"
     />
   </div>
 
@@ -412,10 +440,14 @@ Risk Management Makes you Millionaires.
 
 
         <div>
-  <div class="qr" role="button" tabindex="0" aria-label="Scan QR code to pay">
+  <div class="qr">
     <img
-      src="./assets/images/trc20 trust wallet.jpg"
-      alt="Payment QR code"
+      src="./assets/images/trc20-trust-wallet.webp"
+      alt="Trust Wallet TRC-20 payment QR code"
+      width="400"
+      height="400"
+      loading="lazy"
+      decoding="async"
     />
   </div>
 
@@ -481,7 +513,19 @@ Risk Management Makes you Millionaires.
               <div class="card partner" style="text-align: left" data-reveal>
                 <span class="badge">PARTNER</span>
                 <h3>Exness (old user)</h3>
-                <div>PARTNER CODE: <span class=" btn" style="padding: 10px;">3ir9ulnun5</span></div>
+                <div>
+                  PARTNER CODE:
+                  <button
+                    class="btn copyWallet"
+                    id="partnerCode"
+                    data-copy="partnerCode"
+                    data-label="Partner code copied."
+                    style="padding: 10px;"
+                    type="button"
+                  >
+                    3ir9ulnun5
+                  </button>
+                </div>
                 <ul>
                   <li>
                     Copy the Partner code and Change your exness partner.
@@ -496,7 +540,7 @@ Risk Management Makes you Millionaires.
               <div class="card partner" style="text-align: left" data-reveal>
                 <span class="badge">PARTNER</span>
                 <h3>Exness (new user)</h3>
-                <div><a href="https://one.exnessonelink.com/boarding/sign-up/a/c_eenf5pgw97" target="_blank"><button class="btn">Open account</button></a> </div>
+                <div><a class="btn" href="https://one.exnessonelink.com/boarding/sign-up/a/c_eenf5pgw97" target="_blank" rel="noopener">Open account</a></div>
                 <ul>
                   <li>
                     Click the "Open account" button to register a new qualifying account.
@@ -553,7 +597,7 @@ Risk Management Makes you Millionaires.
               Is this a physical book?<span class="plus">＋</span>
             </button>
             <div class="faq-answer">
-              No. Trading Insights is a digital PDF product.
+              No. Trading Flow is a digital PDF product.
             </div>
           </div>
           <div class="faq-item" data-reveal>
@@ -613,7 +657,7 @@ Risk Management Makes you Millionaires.
         <div class="footer-grid">
           <div class="footer-brand">
             <div class="brand">
-              <span class="brand-mark">TRADING</span> FLOW
+              <span class="brand-mark">TRADING</span> <span>FLOW</span>
             </div>
             <p class="small" style="font-size: 13px; margin-top: 12px">
               Learn. Plan. Trade. Grow.
@@ -630,17 +674,17 @@ Risk Management Makes you Millionaires.
           <div>
             <div class="footer-title">Support</div>
             <div class="footer-links">
-              <a href="https://wa.me/8801540672247">WhatsApp</a
-              ><a href="https://wa.me/8801540672247">Contact</a>
+              <a href="https://wa.me/8801540672247" target="_blank" rel="noopener noreferrer">WhatsApp</a
+              ><a href="https://wa.me/8801540672247" target="_blank" rel="noopener noreferrer">Contact</a>
             </div>
           </div>
           <div>
             <div class="footer-title">Legal</div>
             <div class="footer-links">
-              <a href="PRIVACY_POLICY_URL">Privacy Policy</a
-              ><a href="TERMS_URL">Terms & Conditions</a
-              ><a href="REFUND_POLICY_URL">Refund Policy</a
-              ><a href="RISK_DISCLAIMER_URL">Risk Disclaimer</a>
+              <a href="#">Privacy Policy</a
+              ><a href="#">Terms & Conditions</a
+              ><a href="#">Refund Policy</a
+              ><a href="#">Risk Disclaimer</a>
             </div>
           </div>
         </div>
@@ -655,6 +699,6 @@ Risk Management Makes you Millionaires.
     </footer>
     <div class="toast" id="toast">Wallet address copied.</div>
 
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
   </body>
 </html>
